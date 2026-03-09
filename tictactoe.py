@@ -64,36 +64,24 @@ def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
+    # Rows
     for i in range(3):
-        if board[i][0] == board[i][1] == board[i][2]:
-            if board[i][0] == X:
-                return X
-            elif board[i][0] == O:
-                return O
-            else:
-                return None
+        if board[i][0] is not EMPTY and board[i][0] == board[i][1] == board[i][2]:
+            return board[i][0]
+
+    # Columns
     for j in range(3):
-        if board[0][j] == board[1][j] == board[2][j]:
-            if board[0][j] == X:
-                return X
-            elif board[0][j] == O:
-                return O
-            else:
-                return None
-    if board[0][0] == board[1][1] == board[2][2]:
-        if board[0][0] == X:
-            return X
-        elif board[0][0] == O:
-            return O
-        else:
-            return None
-    if board[2][0] == board[1][1] == board[0][2]:
-        if board[2][0] == X:
-            return X
-        elif board[2][0] == O:
-            return O
-        else:
-            return None
+        if board[0][j] is not EMPTY and board[0][j] == board[1][j] == board[2][j]:
+            return board[0][j]
+
+    # Diagonal 1
+    if board[0][0] is not EMPTY and board[0][0] == board[1][1] == board[2][2]:
+        return board[0][0]
+
+    # Diagonal 2
+    if board[2][0] is not EMPTY and board[2][0] == board[1][1] == board[0][2]:
+        return board[2][0]
+
     return None
 
 
